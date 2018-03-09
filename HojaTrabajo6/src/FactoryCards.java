@@ -3,31 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.Map;
+import java.util.*;
 
 /**
  *
- * @author David
+ * @author David Soto y Luis Delgado
  */
 public class FactoryCards{
     /**
      * Metodo que devuelve un tipo de set segun lo indicado por el usuario
      * @param tipoSet Es el tipo de set que se desea
-     * @return Devuelve un Set
+     * @return Devuelve el tipo de estructura Map a utilzar
      */
-    public static <E> Set<E> getSet(String tipoSet) {
+    public Map FactoryCards(String tipoSet) {
 
-        if (tipoSet.equalsIgnoreCase("HS")) {
-            return new HashSet<E>();
+        if(tipoSet == "HM") {
+            return new HashMap();
 
-        } else if (tipoSet.equalsIgnoreCase("TS")) {
-            return new TreeSet<E>();
+        } if(tipoSet == "TM") {
+            return new TreeMap();
 
-        } else if (tipoSet.equalsIgnoreCase("LHS")) {
-            return new LinkedHashSet<E>();
+        } if(tipoSet == "LHM") {
+            return new LinkedHashMap();
         }
         return null;
     }
