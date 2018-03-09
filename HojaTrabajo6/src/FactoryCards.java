@@ -18,13 +18,13 @@ public class FactoryCards{
      */
     public Map FactoryCards(String tipoSet) {
 
-        if(tipoSet == "HM") {
+        if(tipoSet.equals("HM")) {
             return new HashMap();
 
-        } if(tipoSet == "TM") {
+        } if(tipoSet.equals("TM")) {
             return new TreeMap();
 
-        } if(tipoSet == "LHM") {
+        } if(tipoSet.equals("LHM")) {
             return new LinkedHashMap();
         }
         return null;

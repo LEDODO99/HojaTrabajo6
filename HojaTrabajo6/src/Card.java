@@ -53,7 +53,7 @@ public class Card {
      * Une la clave con el valor
      * @return nombre y valor en un String
      */
-    public String unirString(){
+    public String toString(){
         return nombre + " -- " + tipo;
     }
     /**
@@ -125,7 +125,7 @@ public class Card {
      * @param collecion Array de cartas. c
      * @return Informacion total de las cartasy su conteo.
      */
-    public String MostrarArray(Card[] coleccion){
+    public String MostrarArray(ArrayList<Card> coleccion){
         String cartas = "";
         int contador = 0; 
         int monstruo = 0, hechizo = 0, trampa = 0; 
@@ -159,12 +159,8 @@ public class Card {
         Collections.sort(mazo, (Card c1, Card c2) -> c1.getTipo().compareTo(c2.getTipo()));
         String a = "";
         
-        Card[] cartas = new Card[mazo.size()];
-        for(int i = 0; i < mazo.size(); i++){
-            cartas[i] = mazo.get(i);
-        }
         
-        return MostrarArray(cartas);
+        return MostrarArray(mazo);
     }
     /**
      * Ordena la coleccion de cartas
