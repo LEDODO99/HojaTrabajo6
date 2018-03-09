@@ -56,8 +56,22 @@ public class HojaTrabajo6 {
         while (loader.hasNextLine()){
             posicion++;
             String linea=loader.nextLine();
-            String[] datos=linea.split("|");
-            map.put(posicion, new Card(datos[0],datos[1]));
+            int a=linea.indexOf("|");
+            String nom = linea.substring(0,a);
+            String tipo = linea.substring(a+1, linea.length());
+            map.put(posicion, new Card(nom, tipo));
+        }
+        int respuesta=1;
+        while (respuesta!=0){
+            System.out.println("Ingrese el numero de la instruccion que deseas realizar");
+            System.out.println("0. Salir.");
+            System.out.println("1. Mostrar todas las cartas.");
+            System.out.println("2. Guardar una carta a mi coleccion.");
+            System.out.println("3. Contar y mostrar las cartas de mi mazo.");
+            System.out.println("4. Ordenar por tipo mi mazo.");
+            System.out.println("5. Ordenar coleccion por tipo.");
+            System.out.println("6. Mostrar tipo de carta ingresada.");
+            System.out.println("");
         }
         
         
