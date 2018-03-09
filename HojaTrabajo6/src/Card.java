@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -53,7 +54,7 @@ public class Card {
      * @return nombre y valor en un String
      */
     public String unirString(){
-        return nombre + " --- " + tipo;
+        return nombre + " -- " + tipo;
     }
     /**
      * Agrega una carta a la coleccion del mapeo.
@@ -101,5 +102,118 @@ public class Card {
         });
     }
     
+    /**
+     * Muestra el tipo de una carta.
+     * @param opcion Lo que elije el usuario
+     * @param map La coleccion de mapeos
+     * @return tipo de la carta
+     */
+    public String mostrarTipo(String opcion, Map<Integer, Card> map){
+        String tipo = "";
+        for (Entry<Integer, Card> carta : map.entrySet()){
+            Card valor = carta.getValue();
+            if(valor.getNombre().equals(opcion)){
+                String nom = valor.getNombre();
+                String tip = valor.getTipo();
+                tipo = nom + " es de tipo: " + tip;
+            }
+        }
+        return tipo;
+    }
+    /**
+     * Metodo que permite enlistar todas las cartas.
+     * @param collecion Array de cartas. c
+     * @return Informacion total de las cartasy su conteo.
+     */
+    public String MostrarArray(Card[] coleccion){
+        String cartas = "";
+        int contador = 0; 
+        int monstruo = 0, hechizo = 0, trampa = 0; 
+        for(Card carta: coleccion){
+            contador++;
+            cartas += contador + ". " + carta.toString() + "\n";
+            if(carta.getTipo().equals("Monstruo")) {
+                monstruo++;
+            }if(carta.getTipo().equals("Hechizo")) { 
+                hechizo++;
+            }if(carta.getTipo().equals("Trampa")) {
+                trampa++;
+            }
+            else{
+                
+            }   
+        }
+        if(cartas.isEmpty()){
+            return "No hay cartas";
+        }else{
+            cartas += "\nHay: \n" + "Monstruos: " + monstruo + "\n" + "Hechizos: " + hechizo + "\n" + "Trampas: " + trampa + "\n";
+        }
+        return cartas;
+    }
+    /**
+     * Ordena el mazo de cartas
+     * @param mazo mazo de la persona
+     * @return String de la lista de cartas
+     */
+    public String ordenarMazo(ArrayList<Card> mazo){
+        Collections.sort(mazo, (Card c1, Card c2) -> c1.getTipo().compareTo(c2.getTipo()));
+        String a = "";
+        
+        Card[] cartas = new Card[mazo.size()];
+        for(int i = 0; i < mazo.size(); i++){
+            cartas[i] = mazo.get(i);
+        }
+        
+        return MostrarArray(cartas);
+    }
+    /**
+     * Ordena la coleccion de cartas
+     * @param map Mapa de cartas en la coleccion.
+     * @return Informacion de las cartas ordenadas.
+     */
+    public String ordenarColeccion(Map<Integer, Card> map){
+        Card[] cartas = new Card[map.size()];
+        ArrayList<Card> arreglo = new ArrayList<>();
+        for (Entry<Integer, Card> nueva : map.entrySet()){
+            Card valor = nueva.getValue();
+            Card nueva1 = new Card(valor.getNombre(), valor.getTipo());
+            arreglo.add(nueva1);
+        }        
+        Collections.sort(arreglo, (Card c1, Card c2) -> c1.getTipo().compareTo(c2.getTipo()));
+        for(int i = 0; i < arreglo.size(); i++){
+            cartas[i] = arreglo.get(i);
+        }
+        return ordenarMazo(arreglo);
+    }
+    /**
+     * Cuenta cuantas cartas de cada tipo existen
+     * @param coleccion Coleccion de cartas 
+     * @return el conteo de las cartas
+     */
+    public String contar(ArrayList<Card> coleccion){
+        String cartas = ""; 
+        int contador = 0;
+        int monstruo = 0, hechizo = 0, trampa = 0; 
+        for(Card carta: coleccion){
+            contador++;
+            cartas += contador + ". " + carta.toString() + "\n";
+            
+            if(carta.getTipo().equals("Monstruo")){
+                monstruo++;
+            }else if(carta.getTipo().equals("Hechizo")){
+                hechizo++;
+            }else if(carta.getTipo().equals("Trampa")){
+                trampa++;
+            }
+        }
+        
+        if(cartas.isEmpty()){
+            return "No hay cartas existentes";
+        }else{
+            cartas += "\nExisten: \n"+ "Monstruos: " + monstruo + "\n" + "Hechizos: " + hechizo + "\n"+ "Trampas: " + trampa + "\n";
+        }                
+        
+        return cartas;
+    }        
 }
 
