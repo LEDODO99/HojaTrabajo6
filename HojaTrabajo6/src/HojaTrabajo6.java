@@ -98,7 +98,8 @@ public class HojaTrabajo6 {
             }else if(respuesta==6){
                 System.out.println("Ingrese el nombre de la carta");
                 String obtenerTipo=s.nextLine();
-                if (c.buscar(map, obtenerTipo)){
+                if (c.buscar(map, obtenerTipo)==true){
+                    System.out.println(c.mostrarTipo(obtenerTipo, map));
                 }else{
                     System.out.println("No se reconoce el nombre de la carta");
                 }

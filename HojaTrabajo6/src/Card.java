@@ -115,7 +115,7 @@ public class Card {
             if(valor.getNombre().equals(opcion)){
                 String nom = valor.getNombre();
                 String tip = valor.getTipo();
-                tipo = nom + " es de tipo: " + tip;
+                tipo = nom + " es de tipo " + tip;
             }
         }
         return tipo;
