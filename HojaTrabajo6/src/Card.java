@@ -122,7 +122,7 @@ public class Card {
     }
     /**
      * Metodo que permite enlistar todas las cartas.
-     * @param collecion Array de cartas. c
+     * @param coleccion Array de cartas. c
      * @return Informacion total de las cartasy su conteo.
      */
     public String MostrarArray(ArrayList<Card> coleccion){
